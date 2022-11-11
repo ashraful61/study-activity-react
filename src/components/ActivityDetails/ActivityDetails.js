@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Study = () => {
+const ActivityDetails = () => {
     return (
         <div>
-                
+            ac de
         </div>
     );
 };
 
-export default Study;
+export default ActivityDetails;

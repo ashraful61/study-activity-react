@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Study = () => {
+const Subject = () => {
     return (
         <div>
-                
+            subject
         </div>
     );
 };
 
-export default Study;
+export default Subject;
