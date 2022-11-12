@@ -30,7 +30,7 @@ const Study = () => {
             ))}
           </div>
         </div>
-        <div className="col-4 col-sm-4">
+        <div className="col-4 col-sm-4 p-3">
            <div className="activity-detail-container">
            <ActivityDetails activityDetails={activityDetails}></ActivityDetails>
            </div>
