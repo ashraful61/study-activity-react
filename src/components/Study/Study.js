@@ -28,7 +28,7 @@ const Study = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-8 col-sm-8 p-5">
+        <div className="col-8 col-sm-8 p-sm-5">
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {subjects.map((subject) => (
               <Subject
@@ -39,7 +39,7 @@ const Study = () => {
             ))}
           </div>
         </div>
-        <div className="col-4 col-sm-4 p-3">
+        <div className="col-4 col-sm-4 p-sm-3">
            <div className="activity-detail-container position-sticky top-0 overflow-auto">
            <ActivityDetails activityDetails={activityDetails}></ActivityDetails>
            </div>

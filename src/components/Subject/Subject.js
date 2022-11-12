@@ -13,7 +13,7 @@ const Subject = ({ subject, addToListHandler }) => {
           <h5 className="card-title">{name}</h5>
           <p className="card-text">{description}</p>
           <p><span className="fw-bold">Required Time:</span> {time}s</p>
-          <button onClick={() => addToListHandler(subject)} className="btn btn-primary px-5 fw-bold select-btn">
+          <button onClick={() => addToListHandler(subject)} className="btn btn-primary px-sm-5 fw-bold select-btn">
             Add to List
           </button>
         </div>

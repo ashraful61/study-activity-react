@@ -8,4 +8,15 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .break-time {
+        width: 44px;
+        height: 44px;
+    }
+    .btn-common {
+        font-size: 11px !important;
+    }
 }

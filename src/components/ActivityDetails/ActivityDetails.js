@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ActivityDetails.css";
-
+import { ToastContainer, toast } from 'react-toastify';
 const ActivityDetails = ({ activityDetails }) => {
   const [breakTime, setBreakTime] = useState(0);
   const [time, setTime] = useState(0);
@@ -23,7 +23,7 @@ const ActivityDetails = ({ activityDetails }) => {
 
   useEffect(() => {
     const getReadingTime = localStorage.getItem("totalReadingTime");
-    setTime(getReadingTime);
+    setTime(Number(getReadingTime));
   }, [totalTime]);
 
   const removeTime = (item) => {
@@ -36,13 +36,23 @@ const ActivityDetails = ({ activityDetails }) => {
   };
 
   const handleActivityBtn = () => {
-    
+    toast.success('Congratulations! Your activity has been completed', {
+      position: "top-right",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
   }
 
   return (
     <div className="activity-detail">
+      
       <div className="profile-container">
-        <div className="d-flex align-items-center pb-2">
+        <div className="d-flex align-items-center pb-2 flex-column flex-sm-row ">
           <div className="p-1">
             <img
               className="rounded-circle"
@@ -53,11 +63,11 @@ const ActivityDetails = ({ activityDetails }) => {
             />
           </div>
           <div className="p-2">
-            <h5>Ashraful Islam</h5>
+            <h6>Ashraful Islam</h6>
             <p>Dhaka, Bangladesh</p>
           </div>
         </div>
-        <div className="profile-info d-flex bg-light rounded p-2 justify-content-around">
+        <div className="profile-info d-flex bg-light rounded p-2 justify-content-around flex-column flex-sm-row">
           <div>
             <span className="fw-bold"> 80Kg</span> <br />
             Weight
@@ -74,7 +84,7 @@ const ActivityDetails = ({ activityDetails }) => {
       </div>
       <div className="break-container pt-3">
         <h3>Add A Break</h3>
-        <div className="profile-info d-flex justify-content-around rounded bg-light p-3">
+        <div className="profile-info d-flex justify-content-around rounded bg-light p-sm-3 flex-column flex-sm-row">
           <div onClick={() => breakTimeHandler(10)} className="break-time">
             10s
           </div>
@@ -96,27 +106,28 @@ const ActivityDetails = ({ activityDetails }) => {
           <span className="fw-bold">Reading Time: </span>
           {time} seconds
           <div>
-            <button
+            <button title="Remove Reading Time"
               onClick={() => removeTime("totalReadingTime")}
-              className="btn btn-danger"
+              className="btn btn-danger btn-common"
             >
-              Remove Reading Time
+              Remove
             </button>
           </div>
         </div>
         <div className="rounded p-3 bg-light">
           <span className="fw-bold">Break Time: </span> {breakTime} seconds
           <div>
-            <button
+            <button title="Remove Break Time"
               onClick={() => removeTime("break-time")}
-              className="btn btn-danger"
+              className="btn btn-danger btn-common"
             >
-              Remove Break Time
+              Remove
             </button>
           </div>
         </div>
         <div className="p-2">
-              <button onClick={handleActivityBtn} className="btn btn-info text-white">Activity Completed</button>
+          <button onClick={handleActivityBtn} className="btn btn-info text-white btn-common">Activity Completed</button>
+          <ToastContainer/>
         </div>
       </div>
     </div>
