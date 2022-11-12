@@ -2,8 +2,8 @@ import React from "react";
 
 const Questions = () => {
   return (
-    <div className="question container">
-      <div className="border-primary py-3">
+    <div className="question p-4">
+      <div className="border border-primary py-3 mb-5 px-5">
         <h3>How does react works?</h3>
         <p>
           The Document Object Model (DOM) presents a web page in a data tree
@@ -24,7 +24,7 @@ const Questions = () => {
           with intense user interaction
         </p>
       </div>
-      <div className="border-primary py-3">
+      <div className="border border-primary py-3 mb-5 px-5">
         <h3>Differences between props vs state?</h3>
         <p>
           props are passed via component properties, they're not reactive. State
@@ -32,7 +32,7 @@ const Questions = () => {
           changes.
         </p>
       </div>
-      <div className="border-primary py-3">
+      <div className="border border-primary py-3 mb-5 px-5">
         <h3>Where we can use useEffect except fetch?</h3>
         <ul>
           <li>State management</li>

@@ -1,12 +1,6 @@
 .break-time {
-    width: 60px;
-    height: 60px;
-    background: o;
-    background: #cdcdcd;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
     cursor: pointer;
     margin: 2px;
 }

@@ -14,9 +14,17 @@ const ActivityDetails = ({ activityDetails }) => {
   }
   // setTime(totalTime)
 
-  const breakTimeHandler = (time) => {
+  const breakTimeHandler = (time,event) => {
+    console.log(event)
     setBreakTime(time);
     localStorage.setItem("break-time", time);
+    const selectedBtn = document.querySelectorAll(
+      "#breakTimeId .btn-success"
+    );
+    for (const btn of selectedBtn) {
+      btn?.classList?.remove("btn-success");
+    }
+    event.currentTarget.classList.add('btn-success');
   };
 
   useEffect(() => {
@@ -81,16 +89,16 @@ const ActivityDetails = ({ activityDetails }) => {
           id="breakTimeId"
           className="profile-info d-flex justify-content-around rounded bg-light p-sm-3 flex-column flex-sm-row"
         >
-          <div onClick={() => breakTimeHandler(10)} className="break-time">
+          <div onClick={(e) => breakTimeHandler(10,e)} className="btn btn-secondary break-time">
             10s
           </div>
-          <div onClick={() => breakTimeHandler(20)} className="break-time">
+          <div onClick={(e) => breakTimeHandler(20,e)} className="btn btn-secondary break-time">
             20s
           </div>
-          <div onClick={() => breakTimeHandler(30)} className="break-time">
+          <div onClick={(e) => breakTimeHandler(30,e)} className="btn btn-secondary break-time">
             30s
           </div>
-          <div onClick={() => breakTimeHandler(40)} className="break-time">
+          <div onClick={(e) => breakTimeHandler(40,e)} className="btn btn-secondary break-time">
             40s
           </div>
         </div>
