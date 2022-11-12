@@ -31,7 +31,7 @@ const Study = () => {
           </div>
         </div>
         <div className="col-4 col-sm-4 p-3">
-           <div className="activity-detail-container">
+           <div className="activity-detail-container position-sticky top-0 overflow-auto">
            <ActivityDetails activityDetails={activityDetails}></ActivityDetails>
            </div>
         </div>
