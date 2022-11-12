@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ActivityDetails.css";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 import profileImg from "./profile.jpg";
 
 const ActivityDetails = ({ activityDetails }) => {
