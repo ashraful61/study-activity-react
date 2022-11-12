@@ -3,11 +3,11 @@ import "./ActivityDetails.css";
 
 const ActivityDetails = ({ activityDetails }) => {
   const [breakTime, setBreakTime] = useState(0);
-  const [time, setTime] = useState(0)
-  
+  const [time, setTime] = useState(0);
+
   let totalTime = 0;
   for (const item of activityDetails) {
-     totalTime += item.time;
+    totalTime += item.time;
   }
   // setTime(totalTime)
 
@@ -22,18 +22,21 @@ const ActivityDetails = ({ activityDetails }) => {
   }, []);
 
   useEffect(() => {
-    const getReadingTime = localStorage.getItem('totalReadingTime')
-    setTime(getReadingTime)
+    const getReadingTime = localStorage.getItem("totalReadingTime");
+    setTime(getReadingTime);
   }, [totalTime]);
 
   const removeTime = (item) => {
-    localStorage.removeItem(item)
-    if(item === 'totalReadingTime') {
-      setTime(0)
+    localStorage.removeItem(item);
+    if (item === "totalReadingTime") {
+      setTime(0);
+    } else if (item === "break-time") {
+      setBreakTime(0);
     }
-    else if(item === 'break-time') {
-      setBreakTime(0)
-    }
+  };
+
+  const handleActivityBtn = () => {
+    
   }
 
   return (
@@ -56,7 +59,7 @@ const ActivityDetails = ({ activityDetails }) => {
         </div>
         <div className="profile-info d-flex bg-light rounded p-2 justify-content-around">
           <div>
-            <span className="fw-bold"> 75Kg</span> <br />
+            <span className="fw-bold"> 80Kg</span> <br />
             Weight
           </div>
           <div>
@@ -64,7 +67,7 @@ const ActivityDetails = ({ activityDetails }) => {
             Height
           </div>
           <div>
-            <span className="fw-bold"> 25 </span> <br />
+            <span className="fw-bold"> 25 year </span> <br />
             Age
           </div>
         </div>
@@ -93,14 +96,27 @@ const ActivityDetails = ({ activityDetails }) => {
           <span className="fw-bold">Reading Time: </span>
           {time} seconds
           <div>
-            <button onClick={() => removeTime('totalReadingTime')} className="btn btn-danger">Remove Reading Time</button>
+            <button
+              onClick={() => removeTime("totalReadingTime")}
+              className="btn btn-danger"
+            >
+              Remove Reading Time
+            </button>
           </div>
-        </div> 
+        </div>
         <div className="rounded p-3 bg-light">
           <span className="fw-bold">Break Time: </span> {breakTime} seconds
           <div>
-          <button onClick={() => removeTime('break-time')} className="btn btn-danger">Remove Break Time</button>
+            <button
+              onClick={() => removeTime("break-time")}
+              className="btn btn-danger"
+            >
+              Remove Break Time
+            </button>
           </div>
+        </div>
+        <div className="p-2">
+              <button onClick={handleActivityBtn} className="btn btn-info text-white">Activity Completed</button>
         </div>
       </div>
     </div>
