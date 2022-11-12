@@ -4,6 +4,12 @@ import "./ActivityDetails.css";
 const ActivityDetails = ({ activityDetails }) => {
   const [breakTime, setBreakTime] = useState(0);
 
+  
+  let totalTime = 0;
+  for (const item of activityDetails) {
+     totalTime += item.time;
+  }
+
   const breakTimeHandler = (time) => {
     setBreakTime(time);
     localStorage.setItem("break-time", time);
@@ -69,7 +75,7 @@ const ActivityDetails = ({ activityDetails }) => {
         <h3>Activity Details</h3>
         <div className="rounded p-3 bg-light mb-3">
           <span className="fw-bold">Reading Time: </span>
-          {activityDetails.length} seconds
+          {totalTime} seconds
         </div>
         <div className="rounded p-3 bg-light">
           <span className="fw-bold">Break Time: </span> {breakTime} seconds

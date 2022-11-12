@@ -14,6 +14,7 @@ const Study = () => {
   const addToListHandler = (selectedSubject) => {
     const newActivity = [...activityDetails, selectedSubject];
     setActivityDetails(newActivity);
+    
   };
 
   return (
