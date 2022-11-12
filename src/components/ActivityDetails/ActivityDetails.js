@@ -3,12 +3,13 @@ import "./ActivityDetails.css";
 
 const ActivityDetails = ({ activityDetails }) => {
   const [breakTime, setBreakTime] = useState(0);
-
+  const [time, setTime] = useState(0)
   
   let totalTime = 0;
   for (const item of activityDetails) {
      totalTime += item.time;
   }
+  // setTime(totalTime)
 
   const breakTimeHandler = (time) => {
     setBreakTime(time);
@@ -20,10 +21,25 @@ const ActivityDetails = ({ activityDetails }) => {
     setBreakTime(Number(getBreakTimeFromStorage));
   }, []);
 
+  useEffect(() => {
+    const getReadingTime = localStorage.getItem('totalReadingTime')
+    setTime(getReadingTime)
+  }, [totalTime]);
+
+  const removeTime = (item) => {
+    localStorage.removeItem(item)
+    if(item === 'totalReadingTime') {
+      setTime(0)
+    }
+    else if(item === 'break-time') {
+      setBreakTime(0)
+    }
+  }
+
   return (
     <div className="activity-detail">
       <div className="profile-container">
-        <div className="d-flex align-items-center pb-3">
+        <div className="d-flex align-items-center pb-2">
           <div className="p-1">
             <img
               className="rounded-circle"
@@ -38,7 +54,7 @@ const ActivityDetails = ({ activityDetails }) => {
             <p>Dhaka, Bangladesh</p>
           </div>
         </div>
-        <div className="profile-info d-flex bg-light rounded p-3 justify-content-around">
+        <div className="profile-info d-flex bg-light rounded p-2 justify-content-around">
           <div>
             <span className="fw-bold"> 75Kg</span> <br />
             Weight
@@ -53,7 +69,7 @@ const ActivityDetails = ({ activityDetails }) => {
           </div>
         </div>
       </div>
-      <div className="break-container pt-5">
+      <div className="break-container pt-3">
         <h3>Add A Break</h3>
         <div className="profile-info d-flex justify-content-around rounded bg-light p-3">
           <div onClick={() => breakTimeHandler(10)} className="break-time">
@@ -71,14 +87,20 @@ const ActivityDetails = ({ activityDetails }) => {
         </div>
       </div>
 
-      <div className="Detail-container pt-4">
+      <div className="Detail-container pt-2">
         <h3>Activity Details</h3>
-        <div className="rounded p-3 bg-light mb-3">
+        <div className="rounded p-2 bg-light mb-2">
           <span className="fw-bold">Reading Time: </span>
-          {totalTime} seconds
-        </div>
+          {time} seconds
+          <div>
+            <button onClick={() => removeTime('totalReadingTime')} className="btn btn-danger">Remove Reading Time</button>
+          </div>
+        </div> 
         <div className="rounded p-3 bg-light">
           <span className="fw-bold">Break Time: </span> {breakTime} seconds
+          <div>
+          <button onClick={() => removeTime('break-time')} className="btn btn-danger">Remove Break Time</button>
+          </div>
         </div>
       </div>
     </div>

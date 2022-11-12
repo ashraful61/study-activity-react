@@ -14,7 +14,15 @@ const Study = () => {
   const addToListHandler = (selectedSubject) => {
     const newActivity = [...activityDetails, selectedSubject];
     setActivityDetails(newActivity);
-    
+    const readingTime = localStorage.getItem('totalReadingTime')
+
+    if(readingTime) {
+      const totalReadingTime = Number(readingTime) + selectedSubject.time
+      localStorage.setItem('totalReadingTime', totalReadingTime)
+    }
+    else {
+      localStorage.setItem('totalReadingTime', selectedSubject.time)
+    } 
   };
 
   return (
