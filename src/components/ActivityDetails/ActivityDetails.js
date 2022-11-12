@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./ActivityDetails.css";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import profileImg from "./profile.jpg";
+
 const ActivityDetails = ({ activityDetails }) => {
   const [breakTime, setBreakTime] = useState(0);
   const [time, setTime] = useState(0);
@@ -36,21 +39,11 @@ const ActivityDetails = ({ activityDetails }) => {
   };
 
   const handleActivityBtn = () => {
-    toast.success('Congratulations! Your activity has been completed', {
-      position: "top-right",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
-  }
+    toast.success("Congratulations! Your activity has been completed!");
+  };
 
   return (
     <div className="activity-detail">
-      
       <div className="profile-container">
         <div className="d-flex align-items-center pb-2 flex-column flex-sm-row ">
           <div className="p-1">
@@ -58,7 +51,7 @@ const ActivityDetails = ({ activityDetails }) => {
               className="rounded-circle"
               height="70"
               width="70"
-              src="https://randomuser.me/api/portraits/men/28.jpg"
+              src={profileImg}
               alt=""
             />
           </div>
@@ -84,7 +77,10 @@ const ActivityDetails = ({ activityDetails }) => {
       </div>
       <div className="break-container pt-3">
         <h3>Add A Break</h3>
-        <div className="profile-info d-flex justify-content-around rounded bg-light p-sm-3 flex-column flex-sm-row">
+        <div
+          id="breakTimeId"
+          className="profile-info d-flex justify-content-around rounded bg-light p-sm-3 flex-column flex-sm-row"
+        >
           <div onClick={() => breakTimeHandler(10)} className="break-time">
             10s
           </div>
@@ -106,7 +102,8 @@ const ActivityDetails = ({ activityDetails }) => {
           <span className="fw-bold">Reading Time: </span>
           {time} seconds
           <div>
-            <button title="Remove Reading Time"
+            <button
+              title="Remove Reading Time"
               onClick={() => removeTime("totalReadingTime")}
               className="btn btn-danger btn-common"
             >
@@ -117,7 +114,8 @@ const ActivityDetails = ({ activityDetails }) => {
         <div className="rounded p-3 bg-light">
           <span className="fw-bold">Break Time: </span> {breakTime} seconds
           <div>
-            <button title="Remove Break Time"
+            <button
+              title="Remove Break Time"
               onClick={() => removeTime("break-time")}
               className="btn btn-danger btn-common"
             >
@@ -126,8 +124,13 @@ const ActivityDetails = ({ activityDetails }) => {
           </div>
         </div>
         <div className="p-2">
-          <button onClick={handleActivityBtn} className="btn btn-info text-white btn-common">Activity Completed</button>
-          <ToastContainer/>
+          <button
+            onClick={handleActivityBtn}
+            className="btn btn-info text-white btn-common"
+          >
+            Activity Completed
+          </button>
+          <ToastContainer />
         </div>
       </div>
     </div>
